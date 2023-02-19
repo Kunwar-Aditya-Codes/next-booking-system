@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+
+model Restaurant {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  slug          String   @unique
+  description   String
+  images        String[]
+  open_time     String
+  close_time    String
+  location_id   String   @db.ObjectId
+  location      Location @relation(fields: [location_id], references: [id])
+  cuisine_id    String   @db.ObjectId
+  cuisine       Cuisine @relation(fields: [cuisine_id], references: [id])
+  price_range   PriceRange
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+  menus         Menu[]
+}
+
+model Menu {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  description   String
+  price         Int
+  restaurant    Restaurant @relation(fields: [restaurant_id], references: [id])
+  restaurant_id  String   @db.ObjectId
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+}
+
+model Location {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  restaurants   Restaurant[]
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+}
+
+model Cuisine {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  restaurants   Restaurant[]
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+}
+
+enum PriceRange {
+  CHEAP
+  MODERATE
+  EXPENSIVE
+}
+
+
