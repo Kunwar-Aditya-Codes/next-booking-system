@@ -1,5 +1,5 @@
-import Hero from './components/Hero';
-import RestaurantCard from './components/RestaurantCard';
+import Hero from '../components/Hero';
+import RestaurantCard from '../components/RestaurantCard';
 
 export default function Home() {
   return (
