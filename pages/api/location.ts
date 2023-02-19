@@ -9,3 +9,5 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 export default handler;
+
+// Path: pages\api\user.ts
