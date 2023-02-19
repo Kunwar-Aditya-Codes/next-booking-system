@@ -1,5 +1,5 @@
-import Header from '@/components/Header';
 import './globals.css';
+import Navbar from './components/Navbar';
 
 export default function RootLayout({
   children,
@@ -11,7 +11,7 @@ export default function RootLayout({
       <head />
       <body className='bg-slate-300 min-h-screen'>
         <div className='max-w-[90rem] bg-white mx-auto shadow-md'>
-          <Header />
+          <Navbar />
           {children}
         </div>
       </body>
