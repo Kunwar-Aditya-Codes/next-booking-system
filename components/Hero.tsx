@@ -15,7 +15,7 @@ const Hero = () => {
           type='text'
           value={location}
           onChange={(e) => setLocation(e.target.value)}
-          placeholder='Search for a hotel'
+          placeholder='Search for a movie'
           className=' px-2 py-2 rounded-l-2xl bg-transparent border-2 text-white border-rose-400 w-full max-w-3xl outline-none'
         />
         <MagnifyingGlassIcon

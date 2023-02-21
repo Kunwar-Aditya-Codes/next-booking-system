@@ -1,5 +1,5 @@
 import Hero from '../components/Hero';
-import RestaurantCard from '../components/RestaurantCard';
+import MovieCard from '../components/MovieCard';
 
 export default function Home() {
   return (
@@ -8,7 +8,7 @@ export default function Home() {
 
       {/* Restaurant Card */}
       <section className='p-6 grid grid-cols-1 gap-6 md:grid-cols-2 justify-items-center lg:grid-cols-3'>
-        <RestaurantCard />
+        <MovieCard />
       </section>
     </main>
   );
