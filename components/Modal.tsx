@@ -7,6 +7,19 @@ import { XMarkIcon } from '@heroicons/react/24/outline';
 const Modal = ({ isSignIn }: { isSignIn: boolean }) => {
   const [open, setOpen] = useState<boolean>(false);
 
+  const [inputs, setInputs] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    city: '',
+    password: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
+  };
+
   const renderContent = (signinContent: string, signupContent: string) => {
     return isSignIn ? signinContent : signupContent;
   };
@@ -38,7 +51,11 @@ const Modal = ({ isSignIn }: { isSignIn: boolean }) => {
             </div>
             <div className='flex justify-center '>
               <form className='flex flex-col w-full px-6'>
-                <ModalInput isSignIn={isSignIn} />
+                <ModalInput
+                  isSignIn={isSignIn}
+                  inputs={inputs}
+                  handleChange={handleChange}
+                />
                 <button className='bg-slate-700 shadow-lg rounded-md p-2 my-2'>
                   {renderContent('Login', 'Create Account')}
                 </button>

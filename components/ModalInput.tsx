@@ -1,4 +1,17 @@
-const ModalInput = ({ isSignIn }: { isSignIn: Boolean }) => {
+interface Props {
+  isSignIn: Boolean;
+  inputs: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    city: string;
+    password: string;
+  };
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const ModalInput = ({ isSignIn, inputs, handleChange }: Props) => {
   return (
     <>
       {!isSignIn && (
@@ -6,12 +19,18 @@ const ModalInput = ({ isSignIn }: { isSignIn: Boolean }) => {
           <input
             type='text'
             placeholder='First Name'
+            name='firstName'
+            value={inputs.firstName}
+            onChange={handleChange}
             className='border-2 border-slate-700 w-full md:flex-[0.49] bg-transparent rounded-md p-2 my-2'
           />
 
           <input
             type='text'
             placeholder='Last Name'
+            name='lastName'
+            value={inputs.lastName}
+            onChange={handleChange}
             className='border-2 border-slate-700 w-full md:flex-[0.49] bg-transparent rounded-md p-2 my-2'
           />
         </div>
@@ -19,6 +38,9 @@ const ModalInput = ({ isSignIn }: { isSignIn: Boolean }) => {
       <input
         type='email'
         placeholder='Email'
+        name='email'
+        value={inputs.email}
+        onChange={handleChange}
         className='border-2 border-slate-700 w-full bg-transparent rounded-md p-2 my-2'
       />
 
@@ -27,12 +49,18 @@ const ModalInput = ({ isSignIn }: { isSignIn: Boolean }) => {
           <input
             type='text'
             placeholder='Phone'
+            name='phone'
+            value={inputs.phone}
+            onChange={handleChange}
             className='border-2 border-slate-700 w-full md:flex-[0.49] bg-transparent rounded-md p-2 my-2'
           />
 
           <input
             type='text'
             placeholder='City'
+            name='city'
+            value={inputs.city}
+            onChange={handleChange}
             className='border-2 border-slate-700 w-full md:flex-[0.49] bg-transparent rounded-md p-2 my-2'
           />
         </div>
@@ -41,6 +69,9 @@ const ModalInput = ({ isSignIn }: { isSignIn: Boolean }) => {
       <input
         type='password'
         placeholder='Password'
+        name='password'
+        value={inputs.password}
+        onChange={handleChange}
         className='border-2 border-slate-700 w-full bg-transparent rounded-md p-2 my-2'
       />
     </>
