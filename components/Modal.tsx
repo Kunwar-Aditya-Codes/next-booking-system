@@ -11,8 +11,6 @@ const Modal = ({ isSignIn }: { isSignIn: boolean }) => {
     return isSignIn ? signinContent : signupContent;
   };
 
-
-
   return (
     <div>
       <button

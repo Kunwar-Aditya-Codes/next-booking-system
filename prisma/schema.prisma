@@ -20,12 +20,11 @@ model User {
   roles      Role[]
 }
 
-
-
 enum Role {
   ADMIN
   USER
 }
+
 
 model Theater {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
