@@ -5,7 +5,7 @@ type FilterCardProps = {
 
 const FilterCard = ({ title, options }: FilterCardProps) => {
   return (
-    <div className='flex flex-col space-y-2 items-start'>
+    <div className='flex flex-col space-y-2 items-start '>
       <h1 className='text-lg underline underline-offset-2'>{title}</h1>
       <div className='flex items-center flex-wrap gap-x-2'>
         {options.map((option) => (

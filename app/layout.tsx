@@ -10,7 +10,7 @@ export default function RootLayout({
     <html lang='en'>
       <head />
       <body className='bg-slate-300 min-h-screen'>
-        <div className='max-w-[90rem] bg-white mx-auto shadow-md'>
+        <div className='max-w-[90rem]  mx-auto shadow-md text-slate-200 bg-slate-900'>
           <Navbar />
           {children}
         </div>

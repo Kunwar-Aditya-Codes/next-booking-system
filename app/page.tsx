@@ -3,7 +3,7 @@ import MovieCard from '../components/MovieCard';
 
 export default function Home() {
   return (
-    <main>
+    <main className=''>
       <Hero />
 
       {/* Restaurant Card */}
