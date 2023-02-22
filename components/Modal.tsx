@@ -2,16 +2,23 @@
 
 import { useState } from 'react';
 
-const LoginModal = () => {
+const Modal = ({ isSignIn }: { isSignIn: boolean }) => {
   const [open, setOpen] = useState<boolean>(false);
+
+  const renderContent = (signinContent: string, signupContent: string) => {
+    return isSignIn ? signinContent : signupContent;
+  };
 
   return (
     <div>
       <button
         onClick={() => setOpen(true)}
-        className='bg-slate-800 py-2 rounded-2xl px-4'
+        className={`${renderContent(
+          'bg-slate-800',
+          'border-2 border-slate-800 '
+        )} px-4 py-[0.25rem] rounded-2xl`}
       >
-        Login
+        {renderContent('Sign In', 'Sign Up')}
       </button>
 
       {open && (
@@ -47,4 +54,4 @@ const LoginModal = () => {
     </div>
   );
 };
-export default LoginModal;
+export default Modal;

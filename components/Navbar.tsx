@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import LoginModal from './LoginModal';
+import Modal from './Modal';
 
 export default function Navbar() {
   return (
@@ -10,10 +10,8 @@ export default function Navbar() {
         <Link href='/'>Booking Buddy</Link>
       </h1>
       <div className='space-x-6 p-2 w-full max-w-3xl flex items-center justify-center md:justify-end'>
-        <LoginModal />
-        <button className='border-2 border-slate-800 px-4 py-[0.25rem] rounded-2xl'>
-          Sign Up
-        </button>
+        <Modal isSignIn={true} />
+        <Modal isSignIn={false} />
       </div>
     </nav>
   );
