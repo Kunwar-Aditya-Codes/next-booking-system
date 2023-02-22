@@ -11,13 +11,15 @@ const Modal = ({ isSignIn }: { isSignIn: boolean }) => {
     return isSignIn ? signinContent : signupContent;
   };
 
+
+
   return (
     <div>
       <button
         onClick={() => setOpen(true)}
         className={`${renderContent(
-          'bg-slate-800',
-          'border-2 border-slate-800 '
+          'bg-slate-700',
+          'border-2 border-slate-700 '
         )} px-4 py-[0.25rem] rounded-2xl`}
       >
         {renderContent('Sign In', 'Sign Up')}
@@ -38,8 +40,8 @@ const Modal = ({ isSignIn }: { isSignIn: boolean }) => {
             </div>
             <div className='flex justify-center '>
               <form className='flex flex-col w-full px-6'>
-                <ModalInput />
-                <button className='bg-slate-800 shadow-lg rounded-md p-2 my-2'>
+                <ModalInput isSignIn={isSignIn} />
+                <button className='bg-slate-700 shadow-lg rounded-md p-2 my-2'>
                   {renderContent('Login', 'Create Account')}
                 </button>
               </form>

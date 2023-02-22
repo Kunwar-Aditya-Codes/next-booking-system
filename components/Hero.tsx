@@ -9,18 +9,18 @@ const Hero = () => {
 
   const router = useRouter();
   return (
-    <div className='border-b border-b-slate-800'>
+    <div className='border-b border-b-slate-700'>
       <section className='h-[15rem] flex items-center justify-center px-2 '>
         <input
           type='text'
           value={location}
           onChange={(e) => setLocation(e.target.value)}
           placeholder='Search for a movie'
-          className=' px-2 py-2 rounded-l-2xl bg-transparent border-2 border-slate-800 w-full max-w-3xl outline-none'
+          className=' px-2 py-2 rounded-l-2xl bg-transparent border-2 border-slate-700 w-full max-w-3xl outline-none'
         />
         <MagnifyingGlassIcon
           onClick={() => router.push(`/search`)}
-          className='h-[2.7rem] w-[2.7rem] p-[0.65rem] rounded-r-2xl cursor-pointer bg-slate-800'
+          className='h-[2.7rem] w-[2.7rem] p-[0.65rem] rounded-r-2xl cursor-pointer bg-slate-700'
         />
       </section>
     </div>
