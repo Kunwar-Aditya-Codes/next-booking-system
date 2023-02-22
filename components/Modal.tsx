@@ -27,7 +27,10 @@ const Modal = ({ isSignIn }: { isSignIn: boolean }) => {
   return (
     <div>
       <button
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          setOpen(true);
+          document.body.style.overflow = 'hidden';
+        }}
         className={`${renderContent(
           'bg-slate-700',
           'border-2 border-slate-700 '

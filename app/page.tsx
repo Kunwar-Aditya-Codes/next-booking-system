@@ -7,7 +7,10 @@ export default function Home() {
       <Hero />
 
       {/* Restaurant Card */}
-      <section className='p-6 grid grid-cols-1 gap-6 md:grid-cols-2 justify-items-center lg:grid-cols-3'>
+      <section className='p-6 grid grid-cols-1 gap-6 md:grid-cols-2 justify-items-start lg:grid-cols-3 xl:grid-cols-4'>
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
         <MovieCard />
       </section>
     </main>
