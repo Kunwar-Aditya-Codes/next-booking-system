@@ -16,11 +16,11 @@ const Hero = () => {
           value={location}
           onChange={(e) => setLocation(e.target.value)}
           placeholder='Search for a movie'
-          className=' px-2 py-2 rounded-l-2xl bg-transparent border-2 border-fuchsia-500 w-full max-w-3xl outline-none'
+          className=' px-2 py-2 rounded-l-2xl bg-transparent border-2 border-slate-800 w-full max-w-3xl outline-none'
         />
         <MagnifyingGlassIcon
           onClick={() => router.push(`/search`)}
-          className='h-[2.7rem] w-[2.7rem] p-[0.65rem] rounded-r-2xl cursor-pointer bg-fuchsia-500 text-slate-900'
+          className='h-[2.7rem] w-[2.7rem] p-[0.65rem] rounded-r-2xl cursor-pointer bg-slate-800'
         />
       </section>
     </div>

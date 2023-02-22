@@ -9,11 +9,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <head />
-      <body className='bg-slate-300 min-h-screen'>
-        <div className='max-w-[90rem]  mx-auto shadow-md text-slate-200 bg-slate-900'>
-          <Navbar />
-          {children}
-        </div>
+      <body className='min-h-screen mx-auto shadow-md text-slate-200 bg-slate-900 md:px-[4rem]'>
+        <Navbar />
+        {children}
       </body>
     </html>
   );
