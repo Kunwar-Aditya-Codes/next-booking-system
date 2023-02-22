@@ -22,7 +22,7 @@ const ModalInput = ({ isSignIn, inputs, handleChange }: Props) => {
             name='firstName'
             value={inputs.firstName}
             onChange={handleChange}
-            className='border-2 border-slate-700 w-full md:flex-[0.49] bg-transparent rounded-md p-2 my-2'
+            className='border-2 border-blue-900 w-full md:flex-[0.49] bg-transparent rounded-md p-2 my-2'
           />
 
           <input
@@ -31,7 +31,7 @@ const ModalInput = ({ isSignIn, inputs, handleChange }: Props) => {
             name='lastName'
             value={inputs.lastName}
             onChange={handleChange}
-            className='border-2 border-slate-700 w-full md:flex-[0.49] bg-transparent rounded-md p-2 my-2'
+            className='border-2 border-blue-900 w-full md:flex-[0.49] bg-transparent rounded-md p-2 my-2'
           />
         </div>
       )}
@@ -41,7 +41,7 @@ const ModalInput = ({ isSignIn, inputs, handleChange }: Props) => {
         name='email'
         value={inputs.email}
         onChange={handleChange}
-        className='border-2 border-slate-700 w-full bg-transparent rounded-md p-2 my-2'
+        className='border-2 border-blue-900 w-full bg-transparent rounded-md p-2 my-2'
       />
 
       {!isSignIn && (
@@ -52,7 +52,7 @@ const ModalInput = ({ isSignIn, inputs, handleChange }: Props) => {
             name='phone'
             value={inputs.phone}
             onChange={handleChange}
-            className='border-2 border-slate-700 w-full md:flex-[0.49] bg-transparent rounded-md p-2 my-2'
+            className='border-2 border-blue-900 w-full md:flex-[0.49] bg-transparent rounded-md p-2 my-2'
           />
 
           <input
@@ -61,7 +61,7 @@ const ModalInput = ({ isSignIn, inputs, handleChange }: Props) => {
             name='city'
             value={inputs.city}
             onChange={handleChange}
-            className='border-2 border-slate-700 w-full md:flex-[0.49] bg-transparent rounded-md p-2 my-2'
+            className='border-2 border-blue-900 w-full md:flex-[0.49] bg-transparent rounded-md p-2 my-2'
           />
         </div>
       )}
@@ -72,7 +72,7 @@ const ModalInput = ({ isSignIn, inputs, handleChange }: Props) => {
         name='password'
         value={inputs.password}
         onChange={handleChange}
-        className='border-2 border-slate-700 w-full bg-transparent rounded-md p-2 my-2'
+        className='border-2 border-blue-900 w-full bg-transparent rounded-md p-2 my-2'
       />
     </>
   );
