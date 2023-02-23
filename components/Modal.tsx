@@ -64,7 +64,7 @@ const Modal = ({ isSignIn }: { isSignIn: boolean }) => {
                   inputs={inputs}
                   handleChange={handleChange}
                 />
-                <button className='bg-blue-900 shadow-lg rounded-md p-2 my-2'>
+                <button className='bg-indigo-800 shadow-lg rounded-md p-2 my-2'>
                   {renderContent('Login', 'Create Account')}
                 </button>
               </form>
