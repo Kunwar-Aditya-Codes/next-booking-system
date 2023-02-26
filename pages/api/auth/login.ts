@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/lib/prisma';
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
@@ -15,11 +16,37 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     });
 
     if (!userWithEmail) {
-      return res
-        .status(400)
-        .json({ message: 'User with this email does not exist' });
+      return res.status(401).json({ message: 'Invalid Credential' });
     }
+
+    const isPasswordCorrect = await bcrypt.compare(
+      password,
+      userWithEmail.password
+    );
+
+    if (!isPasswordCorrect) {
+      return res.status(401).json({ message: 'Invalid Credentials' });
+    }
+
+    const token = jwt.sign(
+      { id: userWithEmail.id.toString() },
+      process.env.JWT_SECRET as string,
+      {
+        expiresIn: '1d',
+      }
+    );
+
+    res.setHeader(
+      'Set-Cookie',
+      `token=${token}; path=/; httponly; max-age=3600;`
+    );
+
+    return res.status(200).json({
+      message: 'Login Success',
+    });
   }
+
+  return res.status(405).json({ message: 'Unavailable Endpoint' });
 };
 
 export default handler;
