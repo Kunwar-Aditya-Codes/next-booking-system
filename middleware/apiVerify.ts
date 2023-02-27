@@ -1,4 +1,4 @@
-import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
+import { NextApiHandler, NextApiResponse, NextApiRequest } from 'next';
 import jwt from 'jsonwebtoken';
 
 const apiVerify =
@@ -23,12 +23,12 @@ const apiVerify =
         return res.status(401).json({ message: 'Unauthorized (decoded)' });
       }
 
-      console.log(decoded);
-
-      return handler(req, res);
+      req.user = decoded;
     } catch (error) {
       return res.status(401).json({ message: 'Unauthorized' });
     }
+
+    return handler(req, res);
   };
 
 export default apiVerify;
