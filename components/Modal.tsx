@@ -3,10 +3,12 @@
 import { useEffect, useState } from 'react';
 import ModalInput from './ModalInput';
 import { XMarkIcon } from '@heroicons/react/24/outline';
+import useAuth from '@/hooks/useAuth';
 
 const Modal = ({ isSignIn }: { isSignIn: boolean }) => {
   const [open, setOpen] = useState<boolean>(false);
   const [disabled, setDisabled] = useState<boolean>(true);
+  const { signIn, signUp } = useAuth();
 
   const [inputs, setInputs] = useState({
     firstName: '',
@@ -40,6 +42,14 @@ const Modal = ({ isSignIn }: { isSignIn: boolean }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (isSignIn) {
+      signIn({ email: inputs.email, password: inputs.password });
+    }
   };
 
   const renderContent = (signinContent: string, signupContent: string) => {
@@ -80,13 +90,17 @@ const Modal = ({ isSignIn }: { isSignIn: boolean }) => {
               </h1>
             </div>
             <div className='flex justify-center '>
-              <form className='flex flex-col w-full px-6'>
+              <form
+                onSubmit={handleSubmit}
+                className='flex flex-col w-full px-6'
+              >
                 <ModalInput
                   isSignIn={isSignIn}
                   inputs={inputs}
                   handleChange={handleChange}
                 />
                 <button
+                  type='submit'
                   disabled={disabled}
                   className='bg-indigo-800 shadow-lg rounded-md p-2 my-2 disabled:bg-slate-800 disabled:cursor-not-allowed disabled:shadow-none disabled:opacity-50'
                 >
