@@ -1,9 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ModalInput from './ModalInput';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import useAuth from '@/hooks/useAuth';
+import { AuthenticationContext } from '@/context/AuthContext';
+import { Toaster } from 'react-hot-toast';
 
 const Modal = ({ isSignIn }: { isSignIn: boolean }) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -50,6 +52,26 @@ const Modal = ({ isSignIn }: { isSignIn: boolean }) => {
     if (isSignIn) {
       signIn({ email: inputs.email, password: inputs.password });
     }
+
+    if (!isSignIn) {
+      signUp({
+        firstName: inputs.firstName,
+        lastName: inputs.lastName,
+        email: inputs.email,
+        phone: inputs.phone,
+        city: inputs.city,
+        password: inputs.password,
+      });
+    }
+
+    setInputs({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      city: '',
+      password: '',
+    });
   };
 
   const renderContent = (signinContent: string, signupContent: string) => {
@@ -58,6 +80,7 @@ const Modal = ({ isSignIn }: { isSignIn: boolean }) => {
 
   return (
     <div>
+      <Toaster />
       <button
         onClick={() => {
           setOpen(true);
@@ -89,6 +112,7 @@ const Modal = ({ isSignIn }: { isSignIn: boolean }) => {
                 {renderContent('Sign In', 'Sign Up')}
               </h1>
             </div>
+
             <div className='flex justify-center '>
               <form
                 onSubmit={handleSubmit}

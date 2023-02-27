@@ -41,9 +41,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       `token=${token}; path=/; httponly; max-age=3600;`
     );
 
-    return res.status(200).json({
-      message: 'Login Success',
+    const user = await prisma.user.findUnique({
+      where: { id: userWithEmail.id },
+      select: {
+        id: true,
+        firstName: true,
+        lastName: true,
+        email: true,
+        city: true,
+        phone: true,
+      },
     });
+
+    return res.status(200).json(user);
   }
 
   return res.status(405).json({ message: 'Unavailable Endpoint' });
