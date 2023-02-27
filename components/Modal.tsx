@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ModalInput from './ModalInput';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
 const Modal = ({ isSignIn }: { isSignIn: boolean }) => {
   const [open, setOpen] = useState<boolean>(false);
+  const [disabled, setDisabled] = useState<boolean>(true);
 
   const [inputs, setInputs] = useState({
     firstName: '',
@@ -15,6 +16,27 @@ const Modal = ({ isSignIn }: { isSignIn: boolean }) => {
     city: '',
     password: '',
   });
+
+  useEffect(() => {
+    if (isSignIn) {
+      if (inputs.email && inputs.password) {
+        return setDisabled(false);
+      }
+    } else {
+      if (
+        inputs.firstName &&
+        inputs.lastName &&
+        inputs.email &&
+        inputs.phone &&
+        inputs.city &&
+        inputs.password
+      ) {
+        return setDisabled(false);
+      }
+    }
+
+    setDisabled(true);
+  }, [inputs]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -64,7 +86,10 @@ const Modal = ({ isSignIn }: { isSignIn: boolean }) => {
                   inputs={inputs}
                   handleChange={handleChange}
                 />
-                <button className='bg-indigo-800 shadow-lg rounded-md p-2 my-2'>
+                <button
+                  disabled={disabled}
+                  className='bg-indigo-800 shadow-lg rounded-md p-2 my-2 disabled:bg-slate-800 disabled:cursor-not-allowed disabled:shadow-none disabled:opacity-50'
+                >
                   {renderContent('Login', 'Create Account')}
                 </button>
               </form>
