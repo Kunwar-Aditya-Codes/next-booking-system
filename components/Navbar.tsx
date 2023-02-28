@@ -1,12 +1,14 @@
 'use client';
 
 import { AuthenticationContext } from '@/context/AuthContext';
+import useAuth from '@/hooks/useAuth';
 import Link from 'next/link';
 import { useContext } from 'react';
 import Modal from './Modal';
 
 export default function Navbar() {
   const { data, loading } = useContext(AuthenticationContext);
+  const { signOut } = useAuth();
 
   return (
     <nav className='px-6 py-3 flex flex-col items-center md:flex-row border-b border-b-slate-800 space-y-5 md:space-y-0'>
@@ -22,7 +24,10 @@ export default function Navbar() {
                   {data.firstName} {data.lastName}
                 </h1>
 
-                <button className='bg-indigo-800 px-4 py-[0.25rem] rounded-2xl'>
+                <button
+                  onClick={signOut}
+                  className='bg-indigo-800 px-4 py-[0.25rem] rounded-2xl'
+                >
                   Logout
                 </button>
               </>

@@ -1,5 +1,6 @@
 import { AuthenticationContext } from '@/context/AuthContext';
 import axios from 'axios';
+import { removeCookies } from 'cookies-next';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
 
@@ -88,5 +89,10 @@ export default function useAuth() {
     }
   };
 
-  return { signIn, signUp };
+  const signOut = () => {
+    removeCookies('token');
+    setAuthState({ loading: false, error: null, data: null });
+  };
+
+  return { signIn, signUp , signOut };
 }
