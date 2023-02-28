@@ -70,11 +70,8 @@ const AuthContext = ({ children }: { children: React.ReactNode }) => {
   };
 
   useEffect(() => {
+    console.log('Persisting login');
     persistLogin();
-
-    return () => {
-      setAuthState({ loading: false, error: null, data: null });
-    };
   }, []);
 
   return (

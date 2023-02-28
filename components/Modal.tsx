@@ -50,9 +50,7 @@ const Modal = ({ isSignIn }: { isSignIn: boolean }) => {
 
     if (isSignIn) {
       signIn({ email: inputs.email, password: inputs.password });
-    }
-
-    if (!isSignIn) {
+    } else {
       signUp({
         firstName: inputs.firstName,
         lastName: inputs.lastName,

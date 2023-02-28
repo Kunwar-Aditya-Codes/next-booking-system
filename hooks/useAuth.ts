@@ -1,6 +1,6 @@
 import { AuthenticationContext } from '@/context/AuthContext';
 import axios from 'axios';
-import { removeCookies } from 'cookies-next';
+import { deleteCookie } from 'cookies-next';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
 
@@ -30,7 +30,7 @@ export default function useAuth() {
       );
 
       setAuthState({ loading: false, error: null, data: response.data });
-      toast.success('Signed in successfully', { id: 'signIn' });
+      toast.success('Signed in successfully', { id: 'signIn', duration: 2000 });
     } catch (error: any) {
       console.log(error);
       setAuthState({
@@ -62,19 +62,16 @@ export default function useAuth() {
     toast.loading('Signing up...', { id: 'signUp' });
 
     try {
-      const response = await axios.post(
-        'http://localhost:3000/api/auth/register',
-        {
-          firstName,
-          lastName,
-          email,
-          password,
-          phone,
-          city,
-        }
-      );
+      await axios.post('http://localhost:3000/api/auth/register', {
+        firstName,
+        lastName,
+        email,
+        password,
+        phone,
+        city,
+      });
 
-      setAuthState({ loading: false, error: null, data: response.data });
+      setAuthState({ loading: false, error: null, data: null });
       toast.success('Signed up successfully', { id: 'signUp' });
     } catch (error: any) {
       console.log(error);
@@ -89,10 +86,11 @@ export default function useAuth() {
     }
   };
 
-  const signOut = () => {
-    removeCookies('token');
+  const signOut = async () => {
+    deleteCookie('token');
     setAuthState({ loading: false, error: null, data: null });
+    toast.loading('Signing out...', { id: 'signOut', duration: 1000 });
   };
 
-  return { signIn, signUp , signOut };
+  return { signIn, signUp, signOut };
 }
