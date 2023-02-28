@@ -4,7 +4,6 @@ import { useContext, useEffect, useState } from 'react';
 import ModalInput from './ModalInput';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import useAuth from '@/hooks/useAuth';
-import { AuthenticationContext } from '@/context/AuthContext';
 import { Toaster } from 'react-hot-toast';
 
 const Modal = ({ isSignIn }: { isSignIn: boolean }) => {

@@ -88,19 +88,5 @@ export default function useAuth() {
     }
   };
 
-  const persistLogin = async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/api/user/info', {
-        withCredentials: true,
-      });
-
-      console.log(response);
-
-      setAuthState({ loading: false, error: null, data: response.data });
-    } catch (error: any) {
-      console.log(error);
-    }
-  };
-
-  return { signIn, signUp, persistLogin };
+  return { signIn, signUp };
 }

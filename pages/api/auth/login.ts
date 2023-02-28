@@ -38,7 +38,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     res.setHeader(
       'Set-Cookie',
-      `token=${token}; path=/; httponly; max-age=3600;`
+      `token=${token}; path=/; max-age=3600;`
     );
 
     const user = await prisma.user.findUnique({
